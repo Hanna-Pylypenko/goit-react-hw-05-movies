@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
 import { MovieCard } from './MovieCard';
+import { Additional } from '../Additional/Additional';
+import { Container } from 'components/Container/Container';
 export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
@@ -10,5 +12,14 @@ export const MovieDetails = () => {
     moviesApi.getMovieDetails(movieId).then(({ data }) => setMovie(data));
   }, [movieId]);
   console.log(movie);
-  return <Section>{movie !== null && <MovieCard movieData={movie} />}</Section>;
+  return (
+    <Container>
+      {movie !== null && (
+        <Section>
+          <MovieCard movieData={movie} />
+          <Additional movieId={movieId} />
+        </Section>
+      )}
+    </Container>
+  );
 };
