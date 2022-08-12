@@ -1,0 +1,12 @@
+.movieCard {
+  display: flex;
+}
+.movieTitle {
+  font-size: 40px;
+}
+p {
+  font-size: 20px;
+}
+.movieInfo {
+  padding: 15px;
+}
