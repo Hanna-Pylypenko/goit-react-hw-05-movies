@@ -2,7 +2,7 @@ import { moviesApi } from 'services/moviesApi';
 import { useState, useEffect } from 'react';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const HomeView = () => {
+export const Home = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {

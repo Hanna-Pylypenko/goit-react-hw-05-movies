@@ -1,10 +1,10 @@
 import { Container } from 'components/Container/Container';
-import { HomeView } from 'components/HomeView/HomeView';
+import { Home } from 'components/Home/Home';
 
-export const Home = () => {
+export const HomeView = () => {
   return (
     <Container title="Trending Movies">
-      <HomeView />
+      <Home />
     </Container>
   );
 };

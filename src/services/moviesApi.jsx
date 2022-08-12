@@ -22,10 +22,10 @@ const getTrendingMovies = async () => {
     console.log(error);
   }
 };
-const getSearchedMovie = async movieName => {
+const getSearchedMovie = async query => {
   try {
     const response = await axios.get(
-      END_POINTS.SEARCH + API_KEY_TEMPL + '&query=' + movieName
+      END_POINTS.SEARCH + API_KEY_TEMPL + '&query=' + query
     );
     console.log(response);
     if (response.status === 200) {
@@ -42,6 +42,7 @@ const getMovieDetails = async movieId => {
     const response = await axios.get(
       END_POINTS.MOVIE_DETAILS + movieId + API_KEY_TEMPL
     );
+
     if (response.status === 200) {
       return response;
     }
@@ -56,10 +57,11 @@ const getMovieCast = async movieId => {
     const response = await axios.get(
       END_POINTS.MOVIE_DETAILS + movieId + END_POINTS.CAST + API_KEY_TEMPL
     );
+
     if (response.status === 200) {
       return response;
     }
-
+    console.log(response);
     throw new Error(response);
   } catch (error) {
     console.log(error);

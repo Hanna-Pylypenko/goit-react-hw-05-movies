@@ -1,5 +1,6 @@
 import { Section } from 'components/Section/Section';
 import { useState } from 'react';
+
 export const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState(null);
 

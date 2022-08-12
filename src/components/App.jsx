@@ -1,10 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Container } from './Container/Container';
-import { AppBar } from './AppBar/AppBar';
-import { Home } from '../pages/Home';
+import { HomeView } from '../pages/HomeView';
 import { Movies } from './Movies/Movies';
 import React from 'react';
 import { MovieDetails } from './MovieDetailes/MovieDetails';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 // import { Cast } from './Cast/Cast';
 // import { Reviews } from './Reviews/Reviews';
 
@@ -20,18 +19,17 @@ export const App = () => {
       }}
     >
       {' '}
-      <Container>
-        <AppBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<Movies />} />
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomeView />} />
+          <Route path="movies/" element={<Movies />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
             {/* <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} /> */}
           </Route>
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </Container>
+          <Route path="*" element={<HomeView />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
