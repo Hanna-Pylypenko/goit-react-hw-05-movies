@@ -1,9 +1,11 @@
 import { Section } from 'components/Section/Section';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
 import css from './Cast.module.css';
 
-export const Cast = ({ movieId }) => {
+export const Cast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   useEffect(() => {
     moviesApi.getMovieCast(movieId).then(({ data }) => setCast(data.cast));
