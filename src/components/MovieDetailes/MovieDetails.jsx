@@ -12,7 +12,6 @@ export const MovieDetails = () => {
   useEffect(() => {
     moviesApi.getMovieDetails(movieId).then(res => setMovie(res.data));
   }, [movieId]);
-  console.log(movie);
   return (
     <Container>
       {movie !== null && (

@@ -17,12 +17,11 @@ export const Reviews = () => {
         .catch(console.log);
     }
   }, [movieId]);
-  console.log(reviews);
+
   return (
     <Section>
       {reviews.length > 0 ? (
         reviews.map(({ author, content, id }) => {
-          console.log(author, id, content);
           return (
             <li key={id}>
               <h3>Author: {author}</h3>
