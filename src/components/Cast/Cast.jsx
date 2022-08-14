@@ -12,7 +12,7 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <Section title="Cast">
+    <Section>
       <div className={css.castContainer}>
         {cast &&
           cast.map(actor => {

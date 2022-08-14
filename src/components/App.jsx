@@ -5,7 +5,7 @@ import React from 'react';
 import { MovieDetails } from './MovieDetailes/MovieDetails';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Cast } from './Cast/Cast';
-// import { Reviews } from './Reviews/Reviews';
+import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -25,7 +25,7 @@ export const App = () => {
           <Route path="movies/" element={<MoviesView />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path=":cast" element={<Cast />} />
-            {/* <Route path="reviews" element={<Reviews />} /> */}
+            <Route path=":reviews" element={<Reviews />} />
           </Route>
           <Route path="*" element={<HomeView />} />
         </Route>

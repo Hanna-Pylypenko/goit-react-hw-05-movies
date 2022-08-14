@@ -3,7 +3,6 @@ import css from './MovieCard.module.css';
 export const MovieCard = ({ movieData }) => {
   const { title, name, poster_path, overview, genres, vote_average } =
     movieData;
-  console.log(genres);
   return (
     <div className={css.movieCard}>
       <img
