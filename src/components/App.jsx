@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { HomeView } from '../pages/HomeView';
-import { Movies } from './Movies/Movies';
+import { MoviesView } from '../pages/MoviesView';
 import React from 'react';
 import { MovieDetails } from './MovieDetailes/MovieDetails';
 import { SharedLayout } from './SharedLayout/SharedLayout';
@@ -22,7 +22,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomeView />} />
-          <Route path="movies/" element={<Movies />} />
+          <Route path="movies/" element={<MoviesView />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path=":cast" element={<Cast />} />
             {/* <Route path="reviews" element={<Reviews />} /> */}
