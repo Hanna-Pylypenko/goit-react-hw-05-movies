@@ -26,7 +26,11 @@ export const Cast = () => {
                     alt={actor.name}
                   />
                 ) : (
-                  <img scr="./noPoster.jpg" alt="No poster available"></img>
+                  <img
+                    src={require('./no-poster.png')}
+                    alt="No Poster"
+                    width="150px"
+                  />
                 )}
                 <p>Name: {actor.name}</p>
                 <p>Character: {actor.character}</p>
