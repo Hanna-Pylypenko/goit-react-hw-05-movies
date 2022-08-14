@@ -3,7 +3,6 @@ import { SearchBar } from './SearchBar';
 import { useState, useEffect } from 'react';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { moviesApi } from 'services/moviesApi';
-import { Outlet } from 'react-router-dom';
 
 export const Movies = () => {
   const [totalPages, setTotalPages] = useState(null);
@@ -26,7 +25,6 @@ export const Movies = () => {
       <SearchBar onSubmit={onSubmit} />
       {totalPages === 0 && <h3>We didn't find anything.Try again.</h3>}
       {searchedMovies !== null && <MoviesList movies={searchedMovies} />}
-      <Outlet />
     </Section>
   );
 };

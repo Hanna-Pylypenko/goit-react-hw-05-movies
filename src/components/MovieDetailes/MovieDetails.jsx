@@ -10,9 +10,9 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
-    moviesApi.getMovieDetails(movieId).then(({ data }) => setMovie(data));
+    moviesApi.getMovieDetails(movieId).then(res => setMovie(res.data));
   }, [movieId]);
-
+  console.log(movie);
   return (
     <Container>
       {movie !== null && (

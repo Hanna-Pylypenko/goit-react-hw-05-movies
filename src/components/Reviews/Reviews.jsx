@@ -4,21 +4,25 @@ import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
 import { Section } from 'components/Section/Section';
 export const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState(null);
+
   useEffect(() => {
-    moviesApi
-      .getReviews(movieId)
-      .then(({ data: { results } }) => {
-        setReviews(results);
-      })
-      .catch(console.log);
+    if (movieId !== null) {
+      moviesApi
+        .getMovieReviews(movieId)
+        .then(({ data: { results } }) => {
+          setReviews(results);
+        })
+        .catch(console.log);
+    }
   }, [movieId]);
   console.log(reviews);
   return (
-    <Section title="Reviews">
-      {reviews.length ? (
+    <Section>
+      {reviews.length > 0 ? (
         reviews.map(({ author, content, id }) => {
+          console.log(author, id, content);
           return (
             <li key={id}>
               <h3>Author: {author}</h3>
