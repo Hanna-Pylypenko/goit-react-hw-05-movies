@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/120.d9c61ac2.chunk.css","mappings":"AAAA,4BACE,YACF,CACA,6BACE,cACF,CACA,EACE,cACF,CACA,4BACE,YACF","sources":["components/MovieDetails/MovieCard.module.css"],"sourcesContent":[".movieCard {\n  display: flex;\n}\n.movieTitle {\n  font-size: 40px;\n}\np {\n  font-size: 20px;\n}\n.movieInfo {\n  padding: 15px;\n}\n"],"names":[],"sourceRoot":""}
