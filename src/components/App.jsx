@@ -1,11 +1,14 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { HomeView } from '../pages/HomeView';
-import { MoviesView } from '../pages/MoviesView';
 import React from 'react';
-import { MovieDetails } from './MovieDetailes/MovieDetails';
-import { SharedLayout } from './SharedLayout/SharedLayout';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
+const HomeView = lazy(() => import('../pages/HomeView'));
+const MoviesView = lazy(() => import('../pages/MoviesView'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
@@ -18,18 +21,25 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      {' '}
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomeView />} />
-          <Route path="movies/" element={<MoviesView />} />
-          <Route path="movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
+      <Suspense fallback={Loading.pulse()}>
+        <Routes>
+          <Route
+            path="/"
+            element={<SharedLayout />}
+            fallback={Loading.remove()}
+          >
+            <Route index element={<HomeView />} />
+            <Route path="movies/" element={<MoviesView />} />
+
+            <Route path="movies/:slug" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+
+            <Route path="*" element={<HomeView />} />
           </Route>
-          <Route path="*" element={<HomeView />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
     </div>
   );
 };

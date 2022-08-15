@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
-import { Section } from 'components/Section/Section';
-export const Reviews = () => {
+import Section from 'components/Section/Section';
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const { movieId } = useParams();
-
+  const { slug } = useParams();
+  console.log(slug);
+  const movieId = slug.match(/[a-z0-9]+$/)[0];
   useEffect(() => {
     if (movieId !== null) {
       moviesApi
@@ -35,3 +36,4 @@ export const Reviews = () => {
     </Section>
   );
 };
+export default Reviews;

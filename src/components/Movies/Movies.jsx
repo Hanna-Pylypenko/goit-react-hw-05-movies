@@ -1,10 +1,10 @@
-import { Section } from 'components/Section/Section';
-import { SearchBar } from './SearchBar';
+import Section from 'components/Section/Section';
+import SearchBar from './SearchBar';
 import { useState, useEffect } from 'react';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import { moviesApi } from 'services/moviesApi';
 
-export const Movies = () => {
+const Movies = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [query, setQuery] = useState(null);
   const [searchedMovies, setSearchedMovies] = useState(null);
@@ -28,3 +28,4 @@ export const Movies = () => {
     </Section>
   );
 };
+export default Movies;

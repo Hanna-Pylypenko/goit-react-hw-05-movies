@@ -1,8 +1,8 @@
 import { moviesApi } from 'services/moviesApi';
 import { useState, useEffect } from 'react';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
@@ -16,3 +16,4 @@ export const Home = () => {
     movies !== null && <MoviesList movies={movies} title="Trending Today" />
   );
 };
+export default Home;

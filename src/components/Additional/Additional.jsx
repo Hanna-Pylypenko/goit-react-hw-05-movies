@@ -1,7 +1,7 @@
-import { Section } from 'components/Section/Section';
+import Section from 'components/Section/Section';
 import { NavLink } from 'react-router-dom';
 
-export const Additional = ({ movieId }) => {
+const Additional = () => {
   return (
     <Section title="Additional Information">
       <NavLink to="cast">Cast</NavLink>
@@ -10,3 +10,4 @@ export const Additional = ({ movieId }) => {
     </Section>
   );
 };
+export default Additional;

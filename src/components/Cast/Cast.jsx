@@ -1,12 +1,13 @@
-import { Section } from 'components/Section/Section';
+import Section from 'components/Section/Section';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
 import css from './Cast.module.css';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
-  const { movieId } = useParams();
+  const { slug } = useParams();
+  const movieId = slug.match(/[a-z0-9]+$/)[0];
 
   useEffect(() => {
     moviesApi.getMovieCast(movieId).then(({ data }) => setCast(data.cast));
@@ -41,3 +42,4 @@ export const Cast = () => {
     </Section>
   );
 };
+export default Cast;

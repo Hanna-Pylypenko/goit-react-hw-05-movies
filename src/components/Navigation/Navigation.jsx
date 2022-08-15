@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import css from './Navigation.module.css';
-export const Navigation = () => {
+const Navigation = () => {
   return (
     <nav className={css.navigation}>
       <NavLink to="/" className={css.navigationLink}>
@@ -12,3 +12,4 @@ export const Navigation = () => {
     </nav>
   );
 };
+export default Navigation;

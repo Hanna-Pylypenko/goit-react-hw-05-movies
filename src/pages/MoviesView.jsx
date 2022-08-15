@@ -1,10 +1,11 @@
-import { Container } from 'components/Container/Container';
-import { Movies } from 'components/Movies/Movies';
+import Container from 'components/Container/Container';
+import Movies from 'components/Movies/Movies';
 
-export const MoviesView = () => {
+const MoviesView = () => {
   return (
     <Container>
       <Movies />
     </Container>
   );
 };
+export default MoviesView;

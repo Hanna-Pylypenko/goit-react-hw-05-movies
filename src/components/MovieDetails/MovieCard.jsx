@@ -1,6 +1,6 @@
 import { moviesApi } from 'services/moviesApi';
 import css from './MovieCard.module.css';
-export const MovieCard = ({ movieData }) => {
+const MovieCard = ({ movieData }) => {
   const { title, name, poster_path, overview, genres, vote_average } =
     movieData;
   return (
@@ -26,3 +26,4 @@ export const MovieCard = ({ movieData }) => {
     </div>
   );
 };
+export default MovieCard;

@@ -1,7 +1,7 @@
-import { Section } from 'components/Section/Section';
+import Section from 'components/Section/Section';
 import { useState } from 'react';
 
-export const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState(null);
 
   const onQuerySubmit = e => {
@@ -24,3 +24,4 @@ export const SearchBar = ({ onSubmit }) => {
     </Section>
   );
 };
+export default SearchBar;

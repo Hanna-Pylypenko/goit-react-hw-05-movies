@@ -1,5 +1,5 @@
 import css from './Section.module.css';
-export const Section = ({ children, title }) => {
+const Section = ({ children, title }) => {
   return (
     <div className={css.section}>
       {title && <h2 className={css.title}>{title}</h2>}
@@ -7,3 +7,4 @@ export const Section = ({ children, title }) => {
     </div>
   );
 };
+export default Section;
