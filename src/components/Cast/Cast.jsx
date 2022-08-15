@@ -38,6 +38,7 @@ const Cast = () => {
               </li>
             );
           })}
+        {!cast && <h3>No cast information</h3>}
       </div>
     </Section>
   );
