@@ -14,14 +14,12 @@ export const MovieDetails = () => {
   }, [movieId]);
   return (
     <Container>
-      {movie !== null ? (
+      {movie !== null && (
         <Section>
           <MovieCard movieData={movie} />
           <Additional movieId={movieId} />
           <Outlet />
         </Section>
-      ) : (
-        <h1>There is no information yet.</h1>
       )}
     </Container>
   );
