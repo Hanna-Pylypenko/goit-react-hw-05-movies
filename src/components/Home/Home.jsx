@@ -1,6 +1,6 @@
 import { moviesApi } from 'services/moviesApi';
 import { useState, useEffect } from 'react';
-import { TrendingMoviesList } from 'components/TrendingMoviesList/TrendingMoviesList';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const Home = () => {
   const [movies, setMovies] = useState(null);
@@ -13,8 +13,6 @@ export const Home = () => {
 
   console.log(movies);
   return (
-    movies !== null && (
-      <TrendingMoviesList movies={movies} title="Trending Today" />
-    )
+    movies !== null && <MoviesList movies={movies} title="Trending Today" />
   );
 };

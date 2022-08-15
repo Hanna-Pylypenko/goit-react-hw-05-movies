@@ -14,7 +14,8 @@ export const MovieDetails = () => {
   }, [movieId]);
   return (
     <Container>
-      {movie !== null && (
+      {!movie && <h2>Loading...</h2>}
+      {movie && (
         <Section>
           <MovieCard movieData={movie} />
           <Additional movieId={movieId} />
