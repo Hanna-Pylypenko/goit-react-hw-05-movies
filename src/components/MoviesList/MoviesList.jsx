@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Section from 'components/Section/Section';
 import css from './MoviesList.module.css';
 import slugify from 'slugify';
+import PropTypes from 'prop-types';
 const MoviesList = ({ movies, title }) => {
   const makeSlug = string =>
     slugify(string, {
@@ -10,11 +11,11 @@ const MoviesList = ({ movies, title }) => {
 
   return (
     <Section title={title}>
-      {movies.map(movie => {
+      {movies.map(({ id, title, name }) => {
         return (
-          <li key={movie.id.toString()} className={css.moviesListItem}>
-            <Link to={`/movies/${makeSlug(`${movie.title} ${movie.id}`)}`}>
-              {movie.title || movie.name}
+          <li key={id.toString()} className={css.moviesListItem}>
+            <Link to={`/movies/${makeSlug(`${title} ${id}`)}`}>
+              {title || name}
             </Link>
           </li>
         );
@@ -23,3 +24,14 @@ const MoviesList = ({ movies, title }) => {
   );
 };
 export default MoviesList;
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string,
+      id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+};
