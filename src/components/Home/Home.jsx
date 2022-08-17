@@ -11,7 +11,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log(movies);
   return (
     movies !== null && <MoviesList movies={movies} title="Trending Today" />
   );

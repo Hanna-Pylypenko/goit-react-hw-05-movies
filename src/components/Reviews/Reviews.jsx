@@ -8,7 +8,6 @@ const Section = lazy(() => import('components/Section/Section'));
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { slug } = useParams();
-  console.log(slug);
   const movieId = slug.match(/[a-z0-9]+$/)[0];
   useEffect(() => {
     if (movieId !== null) {

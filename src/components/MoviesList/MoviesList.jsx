@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Section from 'components/Section/Section';
 import css from './MoviesList.module.css';
 import slugify from 'slugify';
@@ -8,13 +8,14 @@ const MoviesList = ({ movies, title }) => {
     slugify(string, {
       lower: true,
     });
-
+  const location = useLocation();
+  console.log(location);
   return (
     <Section title={title}>
       {movies.map(({ id, title, name }) => {
         return (
           <li key={id.toString()} className={css.moviesListItem}>
-            <Link to={`/movies/${makeSlug(`${title} ${id}`)}`}>
+            <Link to={`/movies/${makeSlug(`${title} ${id}`)}`} state={location}>
               {title || name}
             </Link>
           </li>
@@ -33,5 +34,5 @@ MoviesList.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
