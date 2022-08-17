@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/947.62064907.chunk.css","mappings":"AAAA,wBAEE,gBAAiB,CACjB,iBAAkB,CAClB,YAAa,CAHb,UAIF,CACA,sBACE,cACF","sources":["components/Section/Section.module.css"],"sourcesContent":[".section {\n  width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n  padding: 30px;\n}\n.title {\n  font-size: 30px;\n}\n"],"names":[],"sourceRoot":""}
