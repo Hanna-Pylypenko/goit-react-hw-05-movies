@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const { slug } = useParams();
   const movieId = slug.match(/[a-z0-9]+$/)[0];
   console.log(movie);
+
   useEffect(() => {
     moviesApi.getMovieDetails(movieId).then(res => setMovie(res.data));
   }, [movieId]);

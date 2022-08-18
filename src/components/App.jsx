@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Navigate } from 'react-router-dom';
 
 const HomeView = lazy(() => import('../pages/HomeView'));
 const MoviesView = lazy(() => import('../pages/MoviesView'));
@@ -36,7 +37,7 @@ export const App = () => {
               <Route path="reviews" element={<Reviews />} />
             </Route>
 
-            <Route path="*" element={<HomeView />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Route>
         </Routes>
       </Suspense>

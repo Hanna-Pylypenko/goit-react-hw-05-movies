@@ -1,9 +1,10 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 const GoBackBtn = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  const [searchParams] = useSearchParams();
+  console.log(searchParams);
   const onGoBack = () => {
     navigate(location?.state.pathname ?? '/', { replace: true });
   };
