@@ -6,11 +6,15 @@ const MovieCard = ({ movieData }) => {
     movieData;
   return (
     <div className={css.movieCard}>
-      <img
-        src={`${moviesApi.POSTER_URL}${poster_path}`}
-        width="250px"
-        alt={title || name}
-      />
+      {poster_path ? (
+        <img
+          src={`${moviesApi.POSTER_URL}${poster_path}`}
+          width="250px"
+          alt={title || name}
+        />
+      ) : (
+        <img src={require('./no-poster.png')} alt="No Poster" width="250px" />
+      )}
       <div className={css.movieInfo}>
         <h2 className={css.movieTitle}> {title || name}</h2>
         <p>User Score: {Math.round(vote_average * 10)}%</p>
@@ -33,7 +37,7 @@ MovieCard.propTypes = {
   movieData: PropTypes.shape({
     title: PropTypes.string,
     name: PropTypes.string,
-    poster_path: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
     overview: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(
       PropTypes.shape({ name: PropTypes.string.isRequired }).isRequired

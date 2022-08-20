@@ -2,7 +2,7 @@ import Section from 'components/Section/Section';
 import { useState } from 'react';
 
 const SearchBar = ({ onSubmit }) => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState('');
 
   const onQuerySubmit = e => {
     e.preventDefault();

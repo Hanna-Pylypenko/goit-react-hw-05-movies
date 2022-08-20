@@ -12,9 +12,10 @@ const Movies = () => {
   const [searchedMovies, setSearchedMovies] = useState(null);
   const onSubmit = data => {
     setQuery(data);
-    setSearchParams(`?query=${query}`);
+    setSearchParams(`?query=${data}`);
     console.log(searchParams);
   };
+
   useEffect(() => {
     if (query !== null) {
       moviesApi.getSearchedMovie(query).then(({ data }) => {
@@ -22,11 +23,14 @@ const Movies = () => {
         setTotalPages(data.total_pages);
       });
     }
-  }, [query]);
+    if (searchParams.get(query)) {
+      setQuery(query);
+    }
+  }, [query, searchParams]);
 
   return (
     <Section>
-      <SearchBar onSubmit={onSubmit} />
+      <SearchBar onSubmit={onSubmit} query={query} />
       {totalPages === 0 && <h3>We didn't find anything.Try again.</h3>}
       {searchedMovies !== null && <MoviesList movies={searchedMovies} />}
     </Section>

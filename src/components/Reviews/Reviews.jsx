@@ -22,7 +22,7 @@ const Reviews = () => {
 
   return (
     <Suspense fallback={Loading.pulse()}>
-      <Section>
+      <Section fallback={Loading.remove()}>
         {reviews.length > 0 ? (
           reviews.map(({ author, content, id }) => {
             Loading.remove();

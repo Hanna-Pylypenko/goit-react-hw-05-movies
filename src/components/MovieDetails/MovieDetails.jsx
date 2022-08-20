@@ -12,7 +12,8 @@ const MovieDetails = () => {
   const { slug } = useParams();
   const movieId = slug.match(/[a-z0-9]+$/)[0];
   const location = useLocation();
-  const goBackLink = location?.state?.from ?? './';
+  const goBackLink = location?.state?.from ?? '/';
+  console.log(goBackLink);
 
   useEffect(() => {
     moviesApi.getMovieDetails(movieId).then(res => setMovie(res.data));
@@ -23,7 +24,7 @@ const MovieDetails = () => {
       <Container>
         {movie && (
           <Section>
-            <Link to={goBackLink}>Go Back</Link>
+            <Link to={`${goBackLink}`}>Go Back</Link>
             <MovieCard movieData={movie} />
             <Additional movieId={movieId} />
             <Outlet />
