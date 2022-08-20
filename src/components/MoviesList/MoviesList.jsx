@@ -18,7 +18,7 @@ const MoviesList = ({ movies, title }) => {
           <li key={id.toString()} className={css.moviesListItem}>
             <Link
               to={`/movies/${makeSlug(`${title} ${id}`)}`}
-              state={{ from: location.pathname }}
+              state={{ from: location }}
             >
               {title || name}
             </Link>
