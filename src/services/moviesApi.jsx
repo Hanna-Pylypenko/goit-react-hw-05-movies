@@ -18,23 +18,21 @@ const getTrendingMovies = async () => {
     }
 
     throw new Error(response);
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 const getSearchedMovie = async query => {
   try {
     const response = await axios.get(
       END_POINTS.SEARCH + API_KEY_TEMPL + '&query=' + query
     );
-    console.log(response);
+
     if (response.status === 200) {
       return response;
     }
 
     throw new Error(response);
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 const getMovieDetails = async movieId => {
@@ -49,7 +47,7 @@ const getMovieDetails = async movieId => {
 
     throw new Error(response);
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 const getMovieCast = async movieId => {
@@ -64,7 +62,7 @@ const getMovieCast = async movieId => {
     console.log(response);
     throw new Error(response);
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 const getMovieReviews = async movieId => {
@@ -78,7 +76,7 @@ const getMovieReviews = async movieId => {
 
     throw new Error(response);
   } catch (error) {
-    console.log(error);
+    return;
   }
 };
 export const moviesApi = {

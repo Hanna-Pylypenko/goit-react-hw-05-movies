@@ -1,15 +1,19 @@
 import Section from 'components/Section/Section';
 import SearchBar from './SearchBar';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { moviesApi } from 'services/moviesApi';
 
 const Movies = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [totalPages, setTotalPages] = useState(null);
   const [query, setQuery] = useState(null);
   const [searchedMovies, setSearchedMovies] = useState(null);
   const onSubmit = data => {
     setQuery(data);
+    setSearchParams(`?query=${query}`);
+    console.log(searchParams);
   };
   useEffect(() => {
     if (query !== null) {

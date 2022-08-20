@@ -6,7 +6,9 @@ const SearchBar = ({ onSubmit }) => {
 
   const onQuerySubmit = e => {
     e.preventDefault();
-    onSubmit(query);
+    if (query) {
+      onSubmit(query);
+    }
   };
   const onQueryInput = e => {
     console.log(e.currentTarget.value);

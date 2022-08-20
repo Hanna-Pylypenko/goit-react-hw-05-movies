@@ -9,13 +9,16 @@ const MoviesList = ({ movies, title }) => {
       lower: true,
     });
   const location = useLocation();
-  console.log(location);
+
   return (
     <Section title={title}>
       {movies.map(({ id, title, name }) => {
         return (
           <li key={id.toString()} className={css.moviesListItem}>
-            <Link to={`/movies/${makeSlug(`${title} ${id}`)}`} state={location}>
+            <Link
+              to={`/movies/${makeSlug(`${title} ${id}`)}`}
+              state={{ from: location }}
+            >
               {title || name}
             </Link>
           </li>
