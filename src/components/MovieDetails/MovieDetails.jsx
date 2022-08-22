@@ -9,11 +9,9 @@ const Additional = lazy(() => import('../Additional/Additional'));
 const Container = lazy(() => import('components/Container/Container'));
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-  const { slug } = useParams();
-  const movieId = slug.match(/[a-z0-9]+$/)[0];
+  const { movieId } = useParams();
   const location = useLocation();
   const goBackLink = location?.state?.from ?? '/';
-  console.log(goBackLink);
 
   useEffect(() => {
     moviesApi.getMovieDetails(movieId).then(res => setMovie(res.data));
@@ -24,13 +22,15 @@ const MovieDetails = () => {
       <Container>
         {movie && (
           <Section>
-            <Link to={`${goBackLink}`}>Go Back</Link>
+            <Link to={goBackLink}>Go Back</Link>
             <MovieCard movieData={movie} />
-            <Additional movieId={movieId} />
-            <Outlet />
+            <Additional goBackLink={goBackLink}/>
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Outlet />
+            </Suspense>
           </Section>
         )}
-        {!movie && <h1> No information found yet</h1>}
+        {!movie && <p> Loading...</p>}
       </Container>
     </Suspense>
   );

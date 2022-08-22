@@ -1,7 +1,7 @@
 import Section from 'components/Section/Section';
 import SearchBar from './SearchBar';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { moviesApi } from 'services/moviesApi';
 
@@ -11,6 +11,7 @@ const Movies = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [query, setQuery] = useState(queryFromUrl ?? '');
   const [searchedMovies, setSearchedMovies] = useState(null);
+  const location = useLocation();
 
   const onSubmit = data => {
     setQuery(data);
@@ -18,7 +19,7 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    if (query !== '') {
+    if (query) {
       moviesApi.getSearchedMovie(query).then(({ data }) => {
         setSearchedMovies(data.results);
         setTotalPages(data.total_pages);
@@ -30,7 +31,7 @@ const Movies = () => {
     <Section>
       <SearchBar onSubmit={onSubmit} searchedMovie={query} />
       {totalPages === 0 && <h3>We didn't find anything.Try again.</h3>}
-      {searchedMovies !== null && <MoviesList movies={searchedMovies} />}
+      {searchedMovies !== null && <MoviesList movies={searchedMovies} location={location}/>}
     </Section>
   );
 };

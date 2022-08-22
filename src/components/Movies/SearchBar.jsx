@@ -2,7 +2,7 @@ import Section from 'components/Section/Section';
 import { useState } from 'react';
 
 const SearchBar = ({ onSubmit, searchedMovie }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(searchedMovie ?? '');
 
   const onQuerySubmit = e => {
     e.preventDefault();
@@ -10,15 +10,16 @@ const SearchBar = ({ onSubmit, searchedMovie }) => {
       onSubmit(query);
     }
   };
-  const onQueryInput = e => {
-    console.log(e.currentTarget.value);
-    setQuery(e.currentTarget.value);
-  };
 
   return (
     <Section>
       <form className="searchQuery" onSubmit={onQuerySubmit}>
-        <input type="text" name="movieSearch" onChange={onQueryInput} />
+        <input
+          type="text"
+          name="movieSearch"
+          value={query}
+          onChange={e => setQuery(e.currentTarget.value)}
+        />
         <button className="sumbitQuery" type="submit">
           Search
         </button>

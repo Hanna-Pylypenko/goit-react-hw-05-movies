@@ -1,12 +1,13 @@
 import Section from 'components/Section/Section';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Additional = () => {
+const Additional = ({ goBackLink }) => {
+  console.log(goBackLink)
   return (
     <Section title="Additional Information">
-      <NavLink to="cast">Cast</NavLink>
+      <Link to="cast" state={{ from : goBackLink}}>Cast</Link>
       <br />
-      <NavLink to="reviews">Reviews</NavLink>
+      <Link to="reviews" state={{from : goBackLink}}>Reviews</Link>
     </Section>
   );
 };

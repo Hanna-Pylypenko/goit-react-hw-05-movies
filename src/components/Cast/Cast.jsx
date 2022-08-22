@@ -1,27 +1,23 @@
 import Section from 'components/Section/Section';
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { moviesApi } from 'services/moviesApi';
-import { Suspense } from 'react';
-import { Loading } from 'notiflix';
 import css from './Cast.module.css';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
-  const { slug } = useParams();
-  const movieId = slug.match(/[a-z0-9]+$/)[0];
-  const location = useLocation();
-  console.log(location);
+  const { movieId } = useParams();
+
   useEffect(() => {
     moviesApi.getMovieCast(movieId).then(({ data }) => setCast(data.cast));
   }, [movieId]);
 
   return (
-    <Suspense fallback={Loading.pulse()}>
-      <Section fallback={Loading.remove()}>
-        <div className={css.castContainer}>
-          {cast &&
-            cast.map(actor => {
+    <Section>
+      <div>
+        {cast && (
+          <ul className={css.castContainer}>
+            {cast.map(actor => {
               return (
                 <li key={actor.id}>
                   {actor.profile_path ? (
@@ -42,10 +38,11 @@ const Cast = () => {
                 </li>
               );
             })}
-          {!cast && <h3>No cast information</h3>}
-        </div>
-      </Section>
-    </Suspense>
+          </ul>
+        )}
+        {!cast && <p>Loading...</p>}
+      </div>
+    </Section>
   );
 };
 export default Cast;

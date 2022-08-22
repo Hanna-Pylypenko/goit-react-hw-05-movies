@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Navigate } from 'react-router-dom';
 
 const HomeView = lazy(() => import('../pages/HomeView'));
@@ -22,17 +21,16 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Suspense fallback={Loading.pulse()}>
+      <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
           <Route
             path="/"
             element={<SharedLayout />}
-            fallback={Loading.remove()}
           >
             <Route index element={<HomeView />} />
             <Route path="movies/" element={<MoviesView />} />
 
-            <Route path="movies/:slug" element={<MovieDetails />}>
+            <Route path="movies/:movieId" element={<MovieDetails />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />
             </Route>
